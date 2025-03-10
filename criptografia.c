@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int main() {
     
+    setlocale(LC_ALL, "Portuguese");
+
     char cripto[100], confimacao, confirmastring = ';';
     int contador;
 
@@ -22,14 +25,15 @@ int main() {
         //Loop de checagem se tem o ';' no final para poder enviar.
         do
         {
-            printf("\nInforme a mensagem que deseja enviar codificada: ");
+            printf("\nInforme a mensagem que deseja enviar codificada (Para finalizar o envio digite ';'): ");
             scanf( "%99[^\n]", cripto); //%99[^\n] Coloquei para contar os espaços na String
+            
             getchar(); // Limpa o \n do buffer
             
             int tamanho = strlen(cripto); // Responsavel por verificar se o ultimo caracter é o ';'
             if (cripto[tamanho -1] != confirmastring)
             {
-                printf("ERRO, Por favor a mensagem deve terminar com o caracter %c para ser enviada", confirmastring);
+                printf("\nERRO, Por favor a mensagem deve terminar com o caracter %c para ser enviada\n", confirmastring);
             }else {
                 // Remove o caractere especial da string antes da codificação
                 cripto[tamanho - 1] = '\0';
@@ -54,7 +58,7 @@ int main() {
         
         printf("Texto codificado: %s\n", cripto); // Resultado da criptografia
         
-        printf("\nContinuar? (S/N)"); // Pede ao usuario se dejesa continuar
+        printf("\nContinuar? (S/N) "); // Pede ao usuario se dejesa continuar
         scanf(" %c", &confimacao); // Recebe a informação
         getchar(); 
     
