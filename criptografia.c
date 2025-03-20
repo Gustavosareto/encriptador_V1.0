@@ -64,7 +64,5 @@ int main() {
     
     } while (confimacao == 's' || confimacao == 'S');  // Checagem se o usuario colocar maiuscula e minuscula
     
-    getchar();
-    
     return 0;
 }
